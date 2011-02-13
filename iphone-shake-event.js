@@ -18,10 +18,12 @@ var iPhoneShake = function(){
                 var z = e.accelerationIncludingGravity.z;
                 if(z < 0) z *= -1;
                 if(x > threshold || y > threshold || z > threshold){
-                    var time = parseInt((new Date())/1000);
-                    if(last_shake + interval < time){
-                        last_shake = time;
-                        func(e);
+                    var now = new Date()/1000;
+                    if(last_shake + 2 < now){
+                        last_shake = now;
+                        func({x: e.accelerationIncludingGravity.x,
+                              y: e.accelerationIncludingGravity.y,
+                              z: e.accelerationIncludingGravity.z});
                     };
                 };
             };

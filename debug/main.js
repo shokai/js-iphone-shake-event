@@ -9,11 +9,11 @@ $(function(){
         $('div#main').prepend(
             $('<p>').append('shake').css('font-size',Math.floor(Math.random()*200)+15)
         );
-        var x = acc.accelerationIncludingGravity.x;
+        var x = acc.x;
         if(x < 0) x *= -1
-        var y = acc.accelerationIncludingGravity.y;
+        var y = acc.y;
         if(y < 0) y *= -1;
-        var z = acc.accelerationIncludingGravity.z;
+        var z = acc.z;
         if(z < 0) z *= -1;
         if(max < x) max = x;
         if(max < y) max = y;
