@@ -33,15 +33,15 @@ onShake
 Parameters
 ==========
 
-* interval : default = 2(sec)
-* threshold : default = 18. max  20.
-
-
     var params = {interval: 3.5,
                   threshold: 12};
     shake.onShake(function(){
       alert('shake');
     }, params);
+
+
+* interval : default = 2(sec)
+* threshold : default = 18. max  20.
 
 
 LICENSE:
