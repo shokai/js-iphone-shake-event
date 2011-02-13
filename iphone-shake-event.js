@@ -1,5 +1,5 @@
 var iPhoneShake = function(){
-    this.onShake = function(func, param){
+    this.onShake = function(func){
         (function(){
             var last_shake = 0;
             window.ondevicemotion = function(e) {
