@@ -14,20 +14,10 @@ var iPhoneShake = function(){
                     console.log("time:"+time+", last:"+last_shake);
                     if(last_shake + 2 < time){
                         last_shake = time;
-                        func({x: e.accelerationIncludingGravity.x,
-                              y: e.accelerationIncludingGravity.y,
-                              z: e.accelerationIncludingGravity.z});
+                        func(e);
                     };
                 };
             };
         })();
-    };
-    
-    this.debug = function(func){
-        window.ondevicemotion = function(e) {
-            func({x: e.accelerationIncludingGravity.x,
-                  y: e.accelerationIncludingGravity.y,
-                  z: e.accelerationIncludingGravity.z});
-        };
     };
 };

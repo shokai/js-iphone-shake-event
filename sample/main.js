@@ -7,13 +7,13 @@ $(function(){
 
     shake.onShake(function(acc){
         $('div#main').prepend(
-            $('<p>').append('shake')
+            $('<p>').append('shake').css('font-size',Math.floor(Math.random()*200)+15)
         );
-        var x = acc.x;
+        var x = acc.accelerationIncludingGravity.x;
         if(x < 0) x *= -1
-        var y = acc.y;
+        var y = acc.accelerationIncludingGravity.y;
         if(y < 0) y *= -1;
-        var z = acc.z;
+        var z = acc.accelerationIncludingGravity.z;
         if(z < 0) z *= -1;
         if(max < x) max = x;
         if(max < y) max = y;
@@ -21,8 +21,4 @@ $(function(){
         c.log("max:"+max+", x:"+acc.x+", y:"+acc.y+" z:"+acc.z);
     });
     
-    /*
-    shake.debug(function(acc){
-    });
-    */
 });
