@@ -34,7 +34,7 @@ Parameters
 ==========
 
     var params = {interval: 3.5,
-                  threshold: 12};
+                  threshold: 12}; // 3.5sec, 1.2G
     shake.onShake(function(){
       alert('shake');
     }, params);
