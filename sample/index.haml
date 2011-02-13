@@ -1,10 +1,12 @@
 !!! XML
 %html
   %head
-    %script{:type => 'text/javascript', :src => './jquery.js'}
-    %script{:type => 'text/javascript', :src => './iphone-js-console.js'}
     %script{:type => 'text/javascript', :src => '../iphone-shake-event.js'}
-    %script{:type => 'text/javascript', :src => './main.js'}    
+    :javascript
+       var shake = new iPhoneShake();
+       shake.onShake(function(){
+         alert('shake');
+       });
   %body
     %h1 iPhone Shake Event
     %div#main
