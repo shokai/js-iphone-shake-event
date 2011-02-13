@@ -40,8 +40,8 @@ Parameters
     }, params);
 
 
-* interval : default = 2(sec)
-* threshold : default = 18. max  20.
+* interval : default is 2.0(sec)
+* threshold : default is 18. max is 20.04066558085978.
 
 
 LICENSE:
