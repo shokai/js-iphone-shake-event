@@ -1,7 +1,11 @@
 var iPhoneShake = function(){
-    this.onShake = function(func){
+    this.onShake = function(func, params){
         (function(){
             var last_shake = 0;
+            var threshold = 18;
+            if(params && params.threshold) threshold = params.threshold;
+            var interval = 2000;
+            if(params && params.interval) interval = params.interval;
             window.ondevicemotion = function(e) {
                 var x = e.accelerationIncludingGravity.x;
                 if(x < 0) x *= -1;
@@ -9,10 +13,9 @@ var iPhoneShake = function(){
                 if(y < 0) y *= -1;
                 var z = e.accelerationIncludingGravity.z;
                 if(z < 0) z *= -1;
-                if(x > 18 || y > 18 || z > 18){
-                    var time = ((new Date())/1000);
-                    console.log("time:"+time+", last:"+last_shake);
-                    if(last_shake + 2 < time){
+                if(x > threshold || y > threshold || z > threshold){
+                    var time =  (new Date())/1000;
+                    if(last_shake + interval < time){
                         last_shake = time;
                         func(e);
                     };

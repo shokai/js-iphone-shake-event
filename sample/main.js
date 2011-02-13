@@ -19,6 +19,9 @@ $(function(){
         if(max < y) max = y;
         if(max < z) max = z;
         c.log("max:"+max+", x:"+acc.x+", y:"+acc.y+" z:"+acc.z);
+    }, {
+        threshold: 12,
+        interval: 0.5
     });
     
 });
