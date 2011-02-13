@@ -1,3 +1,7 @@
+// iphone-shake-event.js
+// (c) 2011 Sho Hashimoto <hashimoto@shokai.org>
+// https://github.com/shokai/js-iphone-shake-event
+
 var iPhoneShake = function(){
     this.onShake = function(func, params){
         (function(){
