@@ -1,13 +1,17 @@
+var c;
+var shake;
+
 $(function(){
-    var c = new JsConsole();
+    c = new JsConsole();
     c.start('ws://192.168.1.35:8088');
 
-    var shake = new iPhoneShake();
+    shake = new iPhoneShake();
     var max = 0;
-
+    $('div#main').append($('<ol>').attr('id','log').css('margin-left','200px'));
+    
     shake.onShake(function(acc){
-        $('div#main').prepend(
-            $('<p>').append('shake').css('font-size',Math.floor(Math.random()*200)+15)
+        $('ol#log').prepend(
+            $('<li>').append('shake').css('font-size',Math.floor(Math.random()*200)+15)
         );
         var x = acc.x;
         if(x < 0) x *= -1
@@ -21,7 +25,7 @@ $(function(){
         c.log("max:"+max+", x:"+acc.x+", y:"+acc.y+" z:"+acc.z);
     }, {
         threshold: 12,
-        interval: 0.5
+        interval: 2
     });
-    
+
 });

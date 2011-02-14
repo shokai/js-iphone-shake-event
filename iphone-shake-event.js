@@ -3,6 +3,7 @@
 // https://github.com/shokai/js-iphone-shake-event
 
 var iPhoneShake = function(){
+    
     this.onShake = function(func, params){
         (function(){
             var last_shake = 0;
@@ -10,23 +11,30 @@ var iPhoneShake = function(){
             if(params && params.threshold > 0) threshold = params.threshold;
             var interval = 2;
             if(params && params.interval > 0) interval = params.interval;
-            window.ondevicemotion = function(e) {
-                var x = e.accelerationIncludingGravity.x;
-                if(x < 0) x *= -1;
-                var y = e.accelerationIncludingGravity.y;
-                if(y < 0) y *= -1;
-                var z = e.accelerationIncludingGravity.z;
-                if(z < 0) z *= -1;
-                if(x > threshold || y > threshold || z > threshold){
-                    var now = new Date()/1000;
-                    if(last_shake + 2 < now){
-                        last_shake = now;
-                        func({x: e.accelerationIncludingGravity.x,
-                              y: e.accelerationIncludingGravity.y,
-                              z: e.accelerationIncludingGravity.z});
+            
+            var acc = new Object();
+            window.addEventListener('devicemotion', function(e){
+                acc.x = e.accelerationIncludingGravity.x;
+                acc.y = e.accelerationIncludingGravity.y;
+                acc.z = e.accelerationIncludingGravity.z;
+            });
+            
+            var running_function = false;
+            setInterval(function(){
+                if(!running_function){
+                    if(Math.abs(acc.x) > threshold ||
+                       Math.abs(acc.y) > threshold ||
+                       Math.abs(acc.z) > threshold){
+                        now = (new Date())/1000;
+                        if(last_shake + interval < now){
+                            last_shake = now;
+                            running_function = true;
+                            func(acc);
+                            running_function = false;
+                        };
                     };
                 };
-            };
+            }, 30);
         })();
     };
 };
