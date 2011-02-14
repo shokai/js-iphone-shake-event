@@ -34,7 +34,7 @@ var iPhoneShake = function(){
                         };
                     };
                 };
-            }, 30);
+            }, 100);
         })();
     };
 };
